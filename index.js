@@ -3,7 +3,7 @@ import { json, send } from 'micro';
 import TelegramBot from 'node-telegram-bot-api';
 
 const token = "7106683591:AAFhWQQ2eVLbRlomWOlLRpcvI7eOx7DZ2Xo";
-const bot = new TelegramBot(token, { polling: false }); 
+const bot = new TelegramBot(token, { polling: false });
 
 function decodeMsg(text) {
     const cleanedText = text.replace(/\n/g, '');
@@ -21,7 +21,6 @@ function decodeMsg(text) {
 
 async function handleRequest(req, res) {
     const { pathname } = parse(req.url);
-
     if (pathname === '/webhook') {
         const body = await json(req);
         bot.processUpdate(body);

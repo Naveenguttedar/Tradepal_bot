@@ -24,8 +24,6 @@ async function handleRequest(req, res) {
     if (pathname === '/webhook') {
         const body = await json(req);
         bot.processUpdate(body);
-
-        // Extract the message from the update
         const message = body.message || body.edited_message;
         if (message) {
             const chatId = message.chat.id;
